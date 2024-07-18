@@ -1,0 +1,15 @@
+{
+  "name": "express-mongoose-mongodb-jobs-api",
+  "version": "1.0.0",
+  "description": "An Express.js app implementing a JSON web token for authentication, and using MongoDB together with Mongoose.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "express-mongoose-mongodb-jobs-api"
+  },
+  "author": "alnah <alexis.nahan@gmail.com>",
+  "license": "MIT"
+}
