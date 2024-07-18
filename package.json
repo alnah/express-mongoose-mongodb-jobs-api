@@ -4,12 +4,16 @@
   "description": "An Express.js app implementing a JSON web token for authentication, and using MongoDB together with Mongoose.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "clear && nodemon ./src/app.js"
   },
   "repository": {
     "type": "git",
     "url": "express-mongoose-mongodb-jobs-api"
   },
   "author": "alnah <alexis.nahan@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
 }
