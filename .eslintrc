@@ -32,6 +32,8 @@
       }
     ],
     "no-console": 0,
-    "no-unused-vars": 0
+    "no-unused-vars": 0,
+    "func-names": "off",
+    "no-underscore-dangle": "off"
   }
 }
