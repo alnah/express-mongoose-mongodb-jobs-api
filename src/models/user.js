@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { isEmail } = require("express-validator");
+const { isEmail } = require("validator");
 
 const UserSchema = new mongoose.Schema({
   name: {
