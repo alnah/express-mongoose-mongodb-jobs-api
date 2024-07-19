@@ -16,8 +16,8 @@ const uri = process.env.MONGO_URI;
 app.use(express.json());
 
 // routes
-app.use("/api/v1", authRoutes);
-app.use("/api/v1", jobsRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/jobs", jobsRoutes);
 
 // middlewares
 app.use(routeNotFoundMiddleware);
