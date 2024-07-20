@@ -27,7 +27,27 @@ const getJob = async (req, res, next) => {
 };
 
 const updateJob = async (req, res, next) => {
-  res.json({ postman: "update job" });
+  const {
+    body: { company, position },
+    user: { _id: userId },
+    params: { id: jobId },
+  } = req;
+
+  if (company === "" || position === "") {
+    throw new BadRequestError("Fields company and position cannot be empty");
+  }
+  const job = await Job.findOneAndUpdate(
+    { _id: jobId, createdBy: userId },
+    req.body,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+  if (!job) {
+    throw new BadRequestError(`Could not find a job with id: ${jobId}`);
+  }
+  res.status(StatusCodes.OK).json({ job });
 };
 
 const deleteJob = async (req, res, next) => {
