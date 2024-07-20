@@ -24,6 +24,9 @@ const uri = process.env.MONGO_URI;
 
 const swaggerDoc = yaml.load("./swagger.yaml");
 
+// trust proxy
+app.enable("trust proxy");
+
 // parser
 app.use(express.json());
 
