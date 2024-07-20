@@ -1,9 +1,16 @@
+const { StatusCodes } = require("http-status-codes");
+
+const Job = require("../models/job");
+
 const getAllJobs = async (req, res, next) => {
   res.json({ postman: "get all jobs" });
 };
 
 const createJob = async (req, res, next) => {
-  res.json({ postman: "create" });
+  req.body.createdBy = req.user._id;
+  console.log(req.body.createdBy);
+  const job = await Job.create(req.body);
+  res.status(StatusCodes.CREATED).json({ job });
 };
 
 const getJob = async (req, res, next) => {
