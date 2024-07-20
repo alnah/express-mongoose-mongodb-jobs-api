@@ -51,7 +51,16 @@ const updateJob = async (req, res, next) => {
 };
 
 const deleteJob = async (req, res, next) => {
-  res.json({ postman: "delete job" });
+  const {
+    user: { _id: userId },
+    params: { id: jobId },
+  } = req;
+
+  const job = await Job.findOneAndDelete({ _id: jobId, createdBy: userId });
+  if (!job) {
+    throw new BadRequestError(`Could not find a job with id: ${jobId}`);
+  }
+  res.status(StatusCodes.OK).json({ job });
 };
 
 module.exports = { getAllJobs, createJob, getJob, updateJob, deleteJob };
