@@ -9,7 +9,8 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     message: err.message || "Something went wrong try again later.",
   };
   if (err.code && err.code === 11000) {
-    customError.message = `Duplicate value entered ${Object.keys(err.keyValue)} field, please choose another value.`;
+    customError.message = `Duplicate value entered ${Object.keys(err.keyValue)} 
+field, please choose another value.`;
     customError.statusCode = StatusCodes.BAD_REQUEST;
   }
   if (err.name === "ValidationError") {

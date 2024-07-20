@@ -12,15 +12,15 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    throw new BadRequestError("Email and password are required fields");
+    throw new BadRequestError("Email and password are required fields.");
   }
   const user = await User.findOne({ email });
   if (!user) {
-    throw new UnauthenticatedError("No account found with this email address");
+    throw new UnauthenticatedError("No account found with this email address.");
   }
   const isPasswordCorrect = await user.comparePassword(password);
   if (!isPasswordCorrect) {
-    throw new UnauthenticatedError("Incorrect password for this email account");
+    throw new UnauthenticatedError("Wrong password for this email account.");
   }
   const token = user.createJwt();
   res.status(StatusCodes.OK).json({ user: { name: user.name }, token });

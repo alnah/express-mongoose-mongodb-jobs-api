@@ -7,7 +7,7 @@ const { UnauthenticatedError } = require("../errors");
 const authUserMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new UnauthenticatedError("Authentication invalid");
+    throw new UnauthenticatedError("Authentication invalid.");
   }
   const token = authHeader.split(" ")[1];
   try {
@@ -16,7 +16,7 @@ const authUserMiddleware = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    throw new UnauthenticatedError("Authentication invalid");
+    throw new UnauthenticatedError("Authentication invalid.");
   }
 };
 

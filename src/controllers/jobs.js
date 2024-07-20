@@ -35,7 +35,7 @@ const updateJob = async (req, res, next) => {
   } = req;
 
   if (company === "" || position === "") {
-    throw new BadRequestError("Fields company and position cannot be empty");
+    throw new BadRequestError("Fields company and position cannot be empty.");
   }
 
   const job = await Job.findOneAndUpdate(
@@ -47,7 +47,7 @@ const updateJob = async (req, res, next) => {
     }
   );
   if (!job) {
-    throw new BadRequestError(`Could not find a job with id: ${jobId}`);
+    throw new BadRequestError(`Could not find a job with id: ${jobId}.`);
   }
   res.status(StatusCodes.OK).json({ job });
 };
@@ -60,7 +60,7 @@ const deleteJob = async (req, res, next) => {
 
   const job = await Job.findOneAndDelete({ _id: jobId, createdBy: userId });
   if (!job) {
-    throw new BadRequestError(`Could not find a job with id: ${jobId}`);
+    throw new BadRequestError(`Could not find a job with id: ${jobId}.`);
   }
   res.status(StatusCodes.OK).json({ job });
 };
